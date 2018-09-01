@@ -20,38 +20,42 @@ body {
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
-    background-color: rgba(255, 113, 30, 0.8);
-    opacity: 0.5;
+    background-color: rgba(255, 113, 30, 0.6);
     grid-row: 1 / 3;
     grid-column: 1 / -1;
 }
 .header h1 {
     margin-left: 20px;
-    flex-grow: 8;
+}
+.header img {
+	height: 100%;
 }
 .header form {
     font-family: "Oswald", sans-serif;
     font-weight: 600;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
-    flex-grow: 1;
+    flex-grow: 8;
+}
+.header form * {
+	margin-right: 15px;
 }
 .nav {
     display: grid;
     padding: 10px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    background-color: rgba(30, 144, 255, 0.2);
+    background-color: rgba(30, 144, 255, 0.4);
     grid-row: 4 / 9;
     grid-column: 3 / 11;
 }
 .nav div legend {
     font-family: "Oswald", sans-serif;
     font-weight: 400;
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 .entryInfo {
     display: flex;
@@ -62,7 +66,19 @@ body {
     border-bottom: 1px solid black;
 }
 .entryInfo button {
+	background-color: #008080;
+	border-color: #00b3b3;
+	font-family: "Oswald", sans-serif;
+	font-weight: 400;
+	font-size: 1.3em;
+	color: #222;
+	width: 20%;
+	height: 40%;
+	border-radius: 10px;
     align-self: center;
+}
+.entryInfo button:focus {
+	outline: none;
 }
 .specifics {
     grid-row: 2 / -1;
@@ -81,13 +97,54 @@ body {
 .todoList {
     background-color: rgba(238, 238, 238, 0.3);
     grid-row: 10 / -1;
-    grid-column: 3 / 11;
+    grid-column: 3 / 11; 
+	overflow-y: auto;
 }
 
 .todoList ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+	height: 100%;
     text-align: center;
+	padding: 10px;
+}
+
+.todoList li {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	list-style-type: none;
+	border: 1px solid #222;
+	border-radius: 4px;
+	width: 75%;
+	margin-bottom: 5px;
+}
+.todoList li:last-of-type {
+	margin-bottom: 0;
+}
+
+.todoHigh {
+	height: 25%;
+	font-size: 3em;
+	background-color: rgba(244, 67, 54, 0.5);
+}
+
+.todoMedium {
+	height: 15%;
+	font-size: 2em;
+	background-color: rgba(255, 235, 59, 0.5);
+}
+
+.todoLow {
+	height: 7%;
+	font-size: 1.2em;
+	background-color: rgba(76, 175, 80, 0.5);
+}
+
+.exitButton {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 1.7%;
+	cursor: pointer;
 }

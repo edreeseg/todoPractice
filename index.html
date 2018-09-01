@@ -10,6 +10,7 @@
     <body>
         <div class="header">
             <h1>Seize Your Day</h1>
+			<img src="https://i.imgur.com/qndMA8e.png" alt="sun logo" />
             <form id="login">
                 <label for="emailLogin">Email:</label>
                 <input id="emailLogin" type="email" />
@@ -19,44 +20,44 @@
             </form>
         </div>
         <div class="nav">
-            <div class="entryInfo">
-                <div>
-                    <legend><label for="todoEntry">Todo:</label></legend>
-                    <input id="todoEntry" type="text" />
-                </div>
-                <div>
-                    <legend>Just for today, or recurring?</legend>
-                    <input type="radio" id="today" name="frequency" />
-                    <label for="today">Just Today</label>
+			<div class="entryInfo">
+				<div>
+					<legend><label for="todoEntry">Todo:</label></legend>
+					<input id="todoEntry" type="text" />
+				</div>
+				<div>
+					<legend>Just for today, or recurring?</legend>
+					<input type="radio" id="today" name="frequency" checked />
+					<label for="today">Just Today</label>
 
-                    <input type="radio" id="recurring" name="frequency" />
-                    <label for="recurring">Recurring</label>
-                </div>
-                <button>Add Todo</button>
-            </div>
-            <div class="specifics">
-                <div>
-                    <legend>How important is this todo?</legend>
-                    <input type="radio" id="high" name="priority"/>
-                    <label for="high">High</label>
-
-                    <input type="radio" id="medium" name="priority"/>
-                    <label for="medium">Medium</label>
-
-                    <input type="radio" id="low" name="priority"/>
-                    <label for="low">Low</label>
-                </div>
-                <div class="todoDuration">
-                    <legend>For how long?</legend>
-                    <select>
-                        <option>Select below</option>
-                        <option>A Week</option>
-                        <option>A Month</option>
-                        <option>A Year</option>
-                        <option>Indefinitely</option>
-                    </select>
-                </div>
-            </div>
+					<input type="radio" id="recurring" name="frequency" />
+					<label for="recurring">Recurring</label>
+				</div>
+				<button class="addTodo">Add Todo</button>
+			</div>
+			<div class="specifics">
+				<div>
+					<legend>How important is this todo?</legend>
+					<input type="radio" id="high" value="high" name="priority" checked />
+					<label for="high">High</label>
+						
+					<input type="radio" id="medium" value="medium" name="priority"/>
+					<label for="medium">Medium</label>
+	
+					<input type="radio" id="low" value="low" name="priority"/>
+					<label for="low">Low</label>
+				</div>
+				<div class="todoDuration">
+					<legend>For how long?</legend>
+					<select>
+						<option>Select below</option>
+						<option>A Week</option>
+						<option>A Month</option>
+						<option>A Year</option>
+						<option>Indefinitely</option>
+					</select>
+				</div>
+			</div>
         </div>
         <div class="todoList">
             <ul class="todos"></ul>
