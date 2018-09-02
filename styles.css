@@ -70,6 +70,9 @@ body {
     font-weight: 400;
     font-size: 1.3em;
 }
+.nav label {
+	margin-right: 10px;
+}
 .entryInfo {
     display: flex;
     justify-content: space-around;
@@ -138,11 +141,15 @@ body {
 	border-radius: 4px;
 	width: 75%;
 	margin-bottom: 5px;
+	word-break: break-word;
+	overflow-y: auto;
 }
 .todoList li:last-of-type {
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
-
+.todoList li span {
+	max-width: 90%;
+}
 .todoHigh {
 	height: 25%;
 	font-size: 3em;

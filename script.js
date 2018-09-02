@@ -20,10 +20,11 @@ const manageEventListeners = {
 		const todoText = document.getElementById("todoEntry");
 		const todoContainer = document.getElementsByClassName("todos")[0];
 		const priority = document.getElementsByName("priority");
+		const test = document.createElement("span");  // Change name!  Using span to have different max-width for text than for li.
 		const highPrio = (element) => element.style.flexGrow = "2";
 		submitButton.addEventListener("click", () => {
 			let todo = document.createElement("li");
-			if (todoText.value) todo.textContent = todoText.value;
+			if (todoText.value) test.textContent = todoText.value; // Used to be adding textContent to the li element directly.
 			else throw new noTodoEntered;
 			let check = true;
 			for (let level of priority){
@@ -34,6 +35,7 @@ const manageEventListeners = {
 					check = !check;
 				}
 			} if (check) throw new noPrioritySelected;
+			todo.appendChild(test);  // Spans are getting replaced with each new entry.
 			const exitButton = document.createElement("img");
 			exitButton.src = "https://i.imgur.com/DgrTvpF.png";
 			exitButton.classList.add("exitButton");
@@ -51,5 +53,9 @@ const manageEventListeners = {
 				e.target.parentNode.remove();
 			});
 		}
+	},
+	
+	sortTodos: () => {
+		console.log("this is a placeholder");
 	}
 }
