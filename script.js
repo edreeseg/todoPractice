@@ -25,14 +25,15 @@ const manageEventListeners = {
 			let todo = document.createElement("li");
 			if (todoText.value) todo.textContent = todoText.value;
 			else throw new noTodoEntered;
+			let check = true;
 			for (let level of priority){
 				if (level.checked){
 					if (level.value === "high") todo.classList.add("todoHigh");
 					else if (level.value === "medium") todo.classList.add("todoMedium");
 					else if (level.value === "low") todo.classList.add("todoLow");
-					check = false;
+					check = !check;
 				}
-			}
+			} if (check) throw new noPrioritySelected;
 			const exitButton = document.createElement("img");
 			exitButton.src = "https://i.imgur.com/DgrTvpF.png";
 			exitButton.classList.add("exitButton");

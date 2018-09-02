@@ -27,12 +27,13 @@ body {
     grid-column: 1 / -1;
 }
 .header h1 {
-    margin-left: 20px;
+    margin: 0 20px;
 }
 .header img {
 	height: 100%;
 }
 .header form {
+	height: 100%;
     font-family: "Oswald", sans-serif;
     font-weight: 600;
     display: flex;
@@ -42,6 +43,18 @@ body {
 }
 .header form * {
 	margin-right: 15px;
+}
+.header button {
+	background-color: #008080;
+	border-color: #00b3b3;
+	font-family: "Oswald", sans-serif;
+	font-size: 1em;
+	width: 10%;
+	height: 40%;
+	border-radius: 10px;
+}
+.header button:focus {
+	outline: none;
 }
 .nav {
     display: grid;
@@ -94,13 +107,20 @@ body {
     left: -3000px;
 }
 
-.todoList {
+.todoList { 
+	position: relative;
     background-color: rgba(238, 238, 238, 0.3);
-    grid-row: 10 / -1;
+    grid-row: 10 / 20;
     grid-column: 3 / 11; 
 	overflow-y: auto;
 }
-
+.sortButton {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 3.5%;
+	cursor: pointer;
+}
 .todoList ul {
 	height: 100%;
     text-align: center;
