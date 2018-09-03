@@ -38,23 +38,24 @@ const manageTodos = {
 		this.updateTodos();
 	},
 	deleteTodos(e){
-		this.todos.splice(e.target.parentNode.id, 1);
-		console.log(this.todos);
+		console.log(this.todos[e.target.parentNode.id]);
 		this.updateTodos();
 	},
 	
 	updateTodos(){
 		const todoContainer = document.getElementsByClassName("todos")[0];
 		todoContainer.innerHTML = "";
-		for (let [index, entry] of this.todos.entries()){
+		for (let i = 0; i < this.todos.length; i++){
 			const newTodo = document.createElement("li");
-			newTodo.textContent = entry.name;
-			newTodo.id = index;
-			if (entry.priority === "high") newTodo.classList.add("todoHigh");
-			else if (entry.priority === "medium") newTodo.classList.add("todoMedium");
+			newTodo.textContent = this.todos[i].name;
+			console.log(i, this.todos[i], this.todos);
+			newTodo.id = i;
+			if (this.todos[i].priority === "high") newTodo.classList.add("todoHigh");
+			else if (this.todos[i].priority === "medium") newTodo.classList.add("todoMedium");
 			else newTodo.classList.add("todoLow");
 			const exitButton = document.createElement("img");
 			exitButton.src = "https://i.imgur.com/DgrTvpF.png";
+			exitButton.classList.add(i);
 			exitButton.classList.add("exitButton");
 			newTodo.appendChild(exitButton);
 			todoContainer.appendChild(newTodo);
@@ -84,8 +85,10 @@ const manageEventListeners = {
 	
 	deleteButtons: () => { // Broken
 		const exitButtons = document.getElementsByClassName("exitButton");
-		for (let i = 0; i < exitButtons.length; i++){
-			exitButtons[i].addEventListener("click", (e) => manageTodos.deleteTodos(e));
+			for(let i = 0; i < manageTodos.todos.length; i++){
+				exitButtons[i].addEventListener("click", (e) => {
+				manageTodos.todos.splice(e.target.parentNode.id, 1)
+				manageTodos.updateTodos()});
 		}
 	},
 	
