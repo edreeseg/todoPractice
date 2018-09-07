@@ -33,6 +33,7 @@ const manageTodos = {
 				check = !check;
 			}
 		} if (check) throw new RequiredFieldsBlank;
+		newTodo.date = new Date();
 		this.todos.push(newTodo);
 		todoText.value = "";
 		this.updateTodos();
@@ -45,11 +46,9 @@ const manageTodos = {
 	updateTodos(){
 		const todoContainer = document.getElementsByClassName("todos")[0];
 		todoContainer.innerHTML = "";
-		console.log(this.todos);
 		for (let i = 0; i < this.todos.length; i++){
 			const newTodo = document.createElement("li");
 			newTodo.textContent = this.todos[i].name;
-			console.log(i, this.todos[i], this.todos);
 			newTodo.id = i;
 			if (this.todos[i].priority === "high") newTodo.classList.add("todoHigh");
 			else if (this.todos[i].priority === "medium") newTodo.classList.add("todoMedium");
@@ -96,17 +95,24 @@ const manageEventListeners = {
 	sortTodos: (() => {
 		const selectSort = document.getElementsByClassName("sortSelect")[0];
 		selectSort.addEventListener("change", () => {
-			console.log(selectSort.value);
 			switch (Array.from(selectSort.children, x => x.value).indexOf(selectSort.value)){
 				case 1:
-					manageTodos.todos = manageTodos.todos.sort((a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0));
+					manageTodos.todos = manageTodos.todos.sort((a, b) => b.date.getTime() - a.date.getTime());
 					manageTodos.updateTodos();
 					break;
 				case 2:
-					manageTodos.todos = manageTodos.todos.sort((a, b) => b.name.charCodeAt(0) - a.name.charCodeAt(0));
+					manageTodos.todos = manageTodos.todos.sort((a, b) => a.date.getTime() - b.date.getTime());
 					manageTodos.updateTodos();
 					break;
 				case 3:
+					manageTodos.todos = manageTodos.todos.sort((a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0));
+					manageTodos.updateTodos();
+					break;
+				case 4:
+					manageTodos.todos = manageTodos.todos.sort((a, b) => b.name.charCodeAt(0) - a.name.charCodeAt(0));
+					manageTodos.updateTodos();
+					break;
+				case 5:
 					manageTodos.todos = manageTodos.todos.sort((a, b) => {
 						if (a.priority === "high" && b.priority !== "high") return -1;
 						else if (b.priority === "high" && a.priority !== "high") return 1;
@@ -116,7 +122,7 @@ const manageEventListeners = {
 					});
 					manageTodos.updateTodos();
 					break;
-				case 4:
+				case 6:
 					manageTodos.todos = manageTodos.todos.sort((a, b) => {
 						if (a.priority === "high" && b.priority !== "high") return 1;
 						else if (b.priority === "high" && a.priority !== "high") return -1;
