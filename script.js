@@ -45,6 +45,7 @@ const manageTodos = {
 	updateTodos(){
 		const todoContainer = document.getElementsByClassName("todos")[0];
 		todoContainer.innerHTML = "";
+		console.log(this.todos);
 		for (let i = 0; i < this.todos.length; i++){
 			const newTodo = document.createElement("li");
 			newTodo.textContent = this.todos[i].name;
@@ -59,8 +60,8 @@ const manageTodos = {
 			exitButton.classList.add("exitButton");
 			newTodo.appendChild(exitButton);
 			todoContainer.appendChild(newTodo);
-			manageEventListeners.deleteButtons();
 		}
+		manageEventListeners.deleteButtons();
 	}
 	
 }
@@ -92,7 +93,40 @@ const manageEventListeners = {
 		}
 	},
 	
-	sortTodos: () => {
-		console.log("this is a placeholder");
-	}
+	sortTodos: (() => {
+		const selectSort = document.getElementsByClassName("sortSelect")[0];
+		selectSort.addEventListener("change", () => {
+			console.log(selectSort.value);
+			switch (Array.from(selectSort.children, x => x.value).indexOf(selectSort.value)){
+				case 1:
+					manageTodos.todos = manageTodos.todos.sort((a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0));
+					manageTodos.updateTodos();
+					break;
+				case 2:
+					manageTodos.todos = manageTodos.todos.sort((a, b) => b.name.charCodeAt(0) - a.name.charCodeAt(0));
+					manageTodos.updateTodos();
+					break;
+				case 3:
+					manageTodos.todos = manageTodos.todos.sort((a, b) => {
+						if (a.priority === "high" && b.priority !== "high") return -1;
+						else if (b.priority === "high" && a.priority !== "high") return 1;
+						else if (a.priority === "medium" && b.priority === "low") return -1;
+						else if (b.priority === "medium" && a.priority === "low") return 1;
+						else return 0;
+					});
+					manageTodos.updateTodos();
+					break;
+				case 4:
+					manageTodos.todos = manageTodos.todos.sort((a, b) => {
+						if (a.priority === "high" && b.priority !== "high") return 1;
+						else if (b.priority === "high" && a.priority !== "high") return -1;
+						else if (a.priority === "medium" && b.priority === "low") return 1;
+						else if (b.priority === "medium" && a.priority === "low") return -1;
+						else return 0;
+					});
+					manageTodos.updateTodos();
+					break;
+			}
+		});
+	})()
 }
