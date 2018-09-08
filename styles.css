@@ -90,11 +90,15 @@ body {
 	color: #222;
 	width: 20%;
 	height: 40%;
+	line-height: 40%;
 	border-radius: 10px;
     align-self: center;
 }
 .entryInfo button:focus {
 	outline: none;
+}
+.entryInfo button:active {
+	font-size: 1.25em;
 }
 .specifics {
     grid-row: 2 / -1;
@@ -116,6 +120,15 @@ body {
     grid-row: 10 / 20;
     grid-column: 3 / 11; 
 	overflow-y: auto;
+}
+.todoList::-webkit-scrollbar {
+	width: 5px;
+}
+.todoList::-webkit-scrollbar-track {
+	background-color: #989898;
+}
+.todoList::-webkit-scrollbar-thumb {
+	background-color: #222;
 }
 .sort {
 	position: absolute;
