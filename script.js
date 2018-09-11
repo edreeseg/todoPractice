@@ -83,7 +83,7 @@ const manageEventListeners = {
 		submitButton.addEventListener("click", () => manageTodos.addTodos());
 	})(),
 	
-	deleteButtons: () => { // Broken
+	deleteButtons: () => {
 		const exitButtons = document.getElementsByClassName("exitButton");
 			for(let i = 0; i < manageTodos.todos.length; i++){
 				exitButtons[i].addEventListener("click", (e) => {
@@ -105,11 +105,11 @@ const manageEventListeners = {
 					manageTodos.updateTodos();
 					break;
 				case 3:
-					manageTodos.todos = manageTodos.todos.sort((a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0));
+					manageTodos.todos = manageTodos.todos.sort((a, b) => a.name.toLowerCase().charCodeAt(0) - b.name.toLowerCase().charCodeAt(0));
 					manageTodos.updateTodos();
 					break;
 				case 4:
-					manageTodos.todos = manageTodos.todos.sort((a, b) => b.name.charCodeAt(0) - a.name.charCodeAt(0));
+					manageTodos.todos = manageTodos.todos.sort((a, b) => b.name.toLowerCase().charCodeAt(0) - a.name.toLowerCase().charCodeAt(0));
 					manageTodos.updateTodos();
 					break;
 				case 5:

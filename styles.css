@@ -121,13 +121,13 @@ body {
     grid-column: 3 / 11; 
 	overflow-y: auto;
 }
-.todoList::-webkit-scrollbar {
+::-webkit-scrollbar {
 	width: 5px;
 }
-.todoList::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
 	background-color: #989898;
 }
-.todoList::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
 	background-color: #222;
 }
 .sort {
